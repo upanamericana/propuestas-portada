@@ -34,13 +34,13 @@
   <main class="ova-main" id="prop-main"></main>
 </div>
 <nav class="prop-nav" aria-label="Propuesta de portada">
-  <button type="button" data-p="A">A · actual</button>
-  <button type="button" data-p="B">B · A sangre</button>
-  <button type="button" data-p="C">C · Quien aprueba</button>
-  <button type="button" data-p="D">D · Cartel</button>
-  <button type="button" data-p="E">E · Foto</button>
+  <button type="button" data-p="1">Propuesta 1</button>
+  <button type="button" data-p="2">Propuesta 2</button>
+  <button type="button" data-p="3">Propuesta 3</button>
+  <button type="button" data-p="4">Propuesta 4</button>
+  <button type="button" data-p="5">Propuesta 5</button>
 </nav>
-<template id="prop-A">
+<template id="prop-1">
 <style>
   /* =========================================================
      PORTADA · Posgrados Panamericana
@@ -216,7 +216,7 @@
   </div>
 </section>
 </template>
-<template id="prop-B">
+<template id="prop-2">
 <style>
   /* =========================================================
      PORTADA · Posgrados Panamericana · PROPUESTA B «A sangre»
@@ -401,7 +401,7 @@
   </div>
 </section>
 </template>
-<template id="prop-C">
+<template id="prop-3">
 <style>
   /* =========================================================
      PORTADA · Posgrados Panamericana · PROPUESTA C «Quien aprueba»
@@ -580,7 +580,7 @@
   </div>
 </section>
 </template>
-<template id="prop-D">
+<template id="prop-4">
 <style>
   /* =========================================================
      PORTADA · Posgrados Panamericana · PROPUESTA D «Cartel»
@@ -765,7 +765,7 @@
   </div>
 </section>
 </template>
-<template id="prop-E">
+<template id="prop-5">
 <style>
   /* =========================================================
      PORTADA · Posgrados Panamericana · PROPUESTA E «Foto»
@@ -963,7 +963,12 @@
   });
   /* el visor es solo la portada: los enlaces al resto del curso no existen aquí */
   main.addEventListener('click', e => { if (e.target.closest('a[href$=".html"]')) e.preventDefault(); });
-  const leer = () => montar(/^#[A-E]$/.test(location.hash) ? location.hash.slice(1) : 'A');
+  /* #1…#5; las letras de los primeros enlaces (#A…#E) siguen funcionando */
+  const LETRAS = { A: '1', B: '2', C: '3', D: '4', E: '5' };
+  const leer = () => {
+    const h = location.hash.slice(1).toUpperCase();
+    montar(/^[1-5]$/.test(h) ? h : LETRAS[h] || '1');
+  };
   addEventListener('hashchange', leer);
   leer();
 </script>
