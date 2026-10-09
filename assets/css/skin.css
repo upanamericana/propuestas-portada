@@ -1284,7 +1284,7 @@ a.up-bloque__tag--link:focus-visible { outline: 2px solid var(--c-acento); outli
 /* 2 · Fotografía con el marco de la línea gráfica --------------------------
    Master graphic B (p. 224): la foto es el Franco Cuartel y el Tahalí la
    cruza. Aquí el Tahalí entra por la esquina inferior izquierda en verde con
-   multiply (variante que el manual permite sobre fotografía, p. 225): tiñe la
+   multiply (variante que el manual permite sobre fotografía, p. 232): tiñe la
    foto sin taparla y nunca cae sobre un rostro centrado. Alto fijo para que
    el recurso caiga siempre sobre la foto, no sobre el pie. */
 .up-foto-ancha { position: relative; margin: 56px 0; }
