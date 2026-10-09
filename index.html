@@ -23,10 +23,15 @@
   }
   .prop-nav button{
     appearance:none; border:0; background:transparent; color:#fff; cursor:pointer;
-    padding:9px 14px; border-radius:4px; font:inherit;
+    padding:9px 12px; border-radius:4px; font:inherit; white-space:nowrap;
   }
   .prop-nav button[aria-current="true"]{ background:#fff; color:#0F5C51; }
   .prop-nav button:focus-visible{ outline:2px solid #D9C9A3; outline-offset:1px; }
+  /* en pantallas estrechas, solo el número: los ocho caben sin partir */
+  @media (max-width: 860px){
+    .prop-pre{ display:none; }
+    .prop-nav button{ padding:9px 13px; }
+  }
 </style>
 </head>
 <body class="ova-body ova-portada-full">
@@ -34,11 +39,14 @@
   <main class="ova-main" id="prop-main"></main>
 </div>
 <nav class="prop-nav" aria-label="Propuesta de portada">
-  <button type="button" data-p="1">Propuesta 1</button>
-  <button type="button" data-p="2">Propuesta 2</button>
-  <button type="button" data-p="3">Propuesta 3</button>
-  <button type="button" data-p="4">Propuesta 4</button>
-  <button type="button" data-p="5">Propuesta 5</button>
+  <button type="button" data-p="1" aria-label="Propuesta 1"><span class="prop-pre">Propuesta </span>1</button>
+  <button type="button" data-p="2" aria-label="Propuesta 2"><span class="prop-pre">Propuesta </span>2</button>
+  <button type="button" data-p="3" aria-label="Propuesta 3"><span class="prop-pre">Propuesta </span>3</button>
+  <button type="button" data-p="4" aria-label="Propuesta 4"><span class="prop-pre">Propuesta </span>4</button>
+  <button type="button" data-p="5" aria-label="Propuesta 5"><span class="prop-pre">Propuesta </span>5</button>
+  <button type="button" data-p="6" aria-label="Propuesta 6"><span class="prop-pre">Propuesta </span>6</button>
+  <button type="button" data-p="7" aria-label="Propuesta 7"><span class="prop-pre">Propuesta </span>7</button>
+  <button type="button" data-p="8" aria-label="Propuesta 8"><span class="prop-pre">Propuesta </span>8</button>
 </nav>
 <template id="prop-1">
 <style>
@@ -948,6 +956,540 @@
   </div>
 </section>
 </template>
+<template id="prop-6">
+<style>
+  /* =========================================================
+     PORTADA · Posgrados Panamericana · PROPUESTA 6 «Foto · Tahalí verde sólido»
+     Variante de la Propuesta 5 (portada-E) con el Tahalí como en el afiche de la p. 228
+     (Master graphic B, visualizaciones): plasta sólida, sin multiply, al borde derecho de la
+     foto, cortada por el formato y lejos del rostro (p. 224). Al ser sólida no aplica la
+     regla del multiply de la p. 232. La textura tipográfica del wordmark,
+     tono sobre tono, detrás del texto (pp. 130, 220). La foto va tal cual: sin filtro de
+     color (p. 28); solo la máscara que la funde y una sombra neutra en la base.
+     Foto: Vitaly Gariev, Unsplash (Unsplash License), unsplash.com/photos/Z6ogoeso9BI.
+     Cabeza en Laurentian Semibold EN ALTAS (p. 213); destacado en bajas (p. 214).
+     Drop-in: sustituye fuente/contenido/portada.html tal cual.
+     ========================================================= */
+  .up-portada{
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:100vh; min-height:100dvh;
+    display:flex; align-items:center;
+    background: linear-gradient(118deg, #062A25 0%, #0A4039 55%, #0B4740 100%);
+    color:#fff;
+  }
+  /* la textura tipográfica detrás del texto: una por composición */
+  .up-portada__textura{
+    position:absolute; z-index:0; pointer-events:none;
+    left:-12%; top:-22%; width:min(70vw, 900px); aspect-ratio:1;
+    background:#F7F4EE;
+    -webkit-mask:var(--up-textura) center / contain no-repeat;
+            mask:var(--up-textura) center / contain no-repeat;
+    opacity:.04;
+  }
+  /* la foto: mitad derecha a toda altura, fundida hacia el texto (el gesto de Andina).
+     El fundido es corto para que la mano que anota (el acto de verificar) quede a la vista. */
+  .up-portada__foto{
+    position:absolute; z-index:1; top:0; right:0; bottom:0;
+    width:min(62vw, 980px);
+    background:url('assets/img/curso/portada-persona.webp') 74% 30% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 12%, #000 28%);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 12%, #000 28%);
+  }
+  /* sombra neutra en la base para asentar la foto; no tiñe (p. 28: sin filtros) */
+  .up-portada__foto::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 62%, rgba(4,30,26,.55) 100%);
+  }
+  /* un solo Tahalí, verde sólido (p. 232, primera columna de Posgrados), entrando por la
+     esquina superior derecha y cortado por el formato, como en el afiche de la p. 228; cruza
+     el hombro, nunca el rostro (p. 224) */
+  .up-portada__tahali{
+    position:absolute; z-index:2; top:0; bottom:0;
+    right:calc(min(62vw, 980px) * -.24);
+    width:calc(min(62vw, 980px) * .48);
+    background:var(--up-tahali-verde) center / 100% 100% no-repeat;
+    pointer-events:none;
+  }
+
+  .up-portada__inner{
+    position:relative; z-index:3;
+    width:100%; max-width:1240px; margin:0 auto;
+    padding:clamp(32px, 6vw, 88px);
+  }
+  .up-portada__texto{ max-width:560px; }
+  .up-portada__logo img{ height:116px; width:auto; display:block; margin-bottom:clamp(28px, 5vh, 56px); }
+  .up-portada__eyebrow{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:var(--font-body); font-weight:600; font-size:.8rem;
+    letter-spacing:.24em; text-transform:uppercase;
+    color:var(--c-dorado-claro); margin-bottom:22px;
+  }
+  .up-portada__eyebrow::before{
+    content:''; width:16px; height:10px;
+    background:var(--up-eyebrow) left center / contain no-repeat;
+  }
+  .up-portada__title{
+    margin:0 0 22px; color:#fff;
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 3.9rem); line-height:.92; letter-spacing:.01em;
+    text-transform:uppercase;
+    -webkit-hyphens:auto; hyphens:auto; hyphenate-limit-chars:8 4 4;
+    text-shadow:0 2px 24px rgba(4,30,26,.5);
+  }
+  .up-portada__title .up-suave{ color:rgba(255,255,255,.74); font-weight:400; }
+  .up-portada__title .up-destacado{
+    display:block; margin-top:.28em;
+    text-transform:none; font-weight:700; letter-spacing:-.015em;
+    font-size:.78em; line-height:1.02;
+    color:var(--c-dorado-claro);
+  }
+  .up-portada__title--largo{ font-size:clamp(2rem, 4.1vw, 3.2rem); }
+  .up-portada__sub{
+    margin:0 0 28px; padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.28);
+    max-width:440px;
+    color:rgba(255,255,255,.86);
+    font-size:clamp(1rem, 1.5vw, 1.15rem); font-weight:300; letter-spacing:.02em;
+  }
+  .up-portada__quote{
+    color:#fff; font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:clamp(1.12rem, 1.8vw, 1.36rem); line-height:1.48;
+    max-width:500px; margin:0 0 38px;
+    padding-left:20px; border-left:3px solid var(--c-dorado);
+  }
+  .up-portada__acciones{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .up-portada__cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:var(--c-acento); text-decoration:none;
+    font-family:var(--font-body); font-weight:600; font-size:1rem; letter-spacing:.02em;
+    padding:16px 30px; border-radius:var(--r-md);
+    box-shadow:0 14px 34px rgba(4,30,26,.40);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .up-portada__cta:hover,
+  .up-portada__cta:focus-visible{ background:var(--c-dorado-claro); color:var(--c-deep); transform:translateY(-2px); }
+  .up-portada__descarga{
+    display:inline-grid; place-items:center;
+    width:52px; height:52px; border-radius:var(--r-md);
+    color:#fff; text-decoration:none;
+    border:1.5px solid rgba(255,255,255,.5);
+    transition:border-color .2s ease;
+  }
+  .up-portada__descarga svg{ width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; overflow:visible; }
+  .up-portada__descarga .up-flecha{ transition:transform .28s cubic-bezier(.34,1.4,.64,1); }
+  .up-portada__descarga:hover, .up-portada__descarga:focus-visible{ border-color:#fff; color:#fff; }
+  .up-portada__descarga:hover .up-flecha, .up-portada__descarga:focus-visible .up-flecha{ transform:translateY(3.5px); }
+
+  @media (prefers-reduced-motion: reduce){
+    .up-portada__descarga .up-flecha{ transition:none; }
+    .up-portada__cta{ transition:none; }
+  }
+  /* Móvil: la foto pasa arriba, a franja, fundida hacia abajo; el texto debajo */
+  @media (max-width: 900px){
+    .up-portada{ flex-direction:column; align-items:stretch; }
+    .up-portada__foto{
+      position:relative; width:100%; height:min(72vw, 380px);
+      background-position:78% 30%;
+      -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+              mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+    }
+    .up-portada__foto::after{ display:none; }
+    .up-portada__tahali{ left:auto; right:-24%; width:48%; top:0; bottom:auto; height:min(72vw, 380px); }
+    .up-portada__textura{ top:30%; left:-40%; width:140%; }
+    .up-portada__inner{ padding-top:8px; }
+    .up-portada__logo img{ height:84px; margin-bottom:24px; }
+    .up-portada__quote{ font-size:1.05rem; max-width:none; }
+    .up-portada__texto{ max-width:none; }
+  }
+</style>
+
+<section class="up-portada">
+  <span class="up-portada__textura" aria-hidden="true"></span>
+  <div class="up-portada__foto" role="img" aria-label="Un profesional de barba canosa y gafas revisa y anota un documento en su escritorio, con luz natural."></div>
+  <span class="up-portada__tahali" aria-hidden="true"></span>
+
+  <div class="up-portada__inner">
+    <div class="up-portada__texto">
+      <div class="up-portada__logo">
+        <img src="assets/img/logos/up-logo-blanco.svg" alt="Posgrados Panamericana · En línea" />
+      </div>
+
+      <div class="up-portada__eyebrow">Posgrados Panamericana · Unidad 2</div>
+
+      <h1 class="up-portada__title up-portada__title--largo" lang="es">
+        De la respuesta <span class="up-suave">a la</span> recomendación:
+        <span class="up-destacado">audita antes de confiar</span>
+      </h1>
+
+      <p class="up-portada__sub">Toma de decisiones con datos&nbsp;+&nbsp;IA</p>
+
+      <!-- Idea clave de la introducción, literal -->
+      <p class="up-portada__quote">
+        Auditar no es desconfiar de todo lo que la IA produce; es verificar antes de
+        actuar.
+      </p>
+
+      <div class="up-portada__acciones">
+        <a class="up-portada__cta" href="temario.html">
+          Ver el contenido
+          <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</template>
+<template id="prop-7">
+<style>
+  /* =========================================================
+     PORTADA · Posgrados Panamericana · PROPUESTA 7 «Foto · Tahalí en contorno dorado»
+     Variante de la Propuesta 5 (portada-E) con el Tahalí en contorno dorado 465, la cuarta
+     variante de Posgrados sobre foto (p. 232: «PANTONE 465 CP [plasta o contorno de 0,4 pts]»).
+     El contorno no tapa la foto: cruza entre el rostro y la mano que anota, lejos del rostro
+     (p. 224). En pantalla el 0,4 pt de imprenta se lleva a 1,5 px. La textura tipográfica del wordmark,
+     tono sobre tono, detrás del texto (pp. 130, 220). La foto va tal cual: sin filtro de
+     color (p. 28); solo la máscara que la funde y una sombra neutra en la base.
+     Foto: Vitaly Gariev, Unsplash (Unsplash License), unsplash.com/photos/Z6ogoeso9BI.
+     Cabeza en Laurentian Semibold EN ALTAS (p. 213); destacado en bajas (p. 214).
+     Drop-in: sustituye fuente/contenido/portada.html tal cual.
+     ========================================================= */
+  .up-portada{
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:100vh; min-height:100dvh;
+    display:flex; align-items:center;
+    background: linear-gradient(118deg, #062A25 0%, #0A4039 55%, #0B4740 100%);
+    color:#fff;
+  }
+  /* la textura tipográfica detrás del texto: una por composición */
+  .up-portada__textura{
+    position:absolute; z-index:0; pointer-events:none;
+    left:-12%; top:-22%; width:min(70vw, 900px); aspect-ratio:1;
+    background:#F7F4EE;
+    -webkit-mask:var(--up-textura) center / contain no-repeat;
+            mask:var(--up-textura) center / contain no-repeat;
+    opacity:.04;
+  }
+  /* la foto: mitad derecha a toda altura, fundida hacia el texto (el gesto de Andina).
+     El fundido es corto para que la mano que anota (el acto de verificar) quede a la vista. */
+  .up-portada__foto{
+    position:absolute; z-index:1; top:0; right:0; bottom:0;
+    width:min(62vw, 980px);
+    background:url('assets/img/curso/portada-persona.webp') 74% 30% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 12%, #000 28%);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 12%, #000 28%);
+  }
+  /* sombra neutra en la base para asentar la foto; no tiñe (p. 28: sin filtros) */
+  .up-portada__foto::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 62%, rgba(4,30,26,.55) 100%);
+  }
+  /* un solo Tahalí, en contorno dorado (p. 232); el trazo no se deforma con la caja */
+  .up-portada__tahali{
+    position:absolute; z-index:2; top:0; bottom:0;
+    right:calc(min(62vw, 980px) * .50);
+    width:calc(min(62vw, 980px) * .40);
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,0 36,0 100,100 64,100' fill='none' stroke='%23B9975B' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    pointer-events:none;
+  }
+
+  .up-portada__inner{
+    position:relative; z-index:3;
+    width:100%; max-width:1240px; margin:0 auto;
+    padding:clamp(32px, 6vw, 88px);
+  }
+  .up-portada__texto{ max-width:560px; }
+  .up-portada__logo img{ height:116px; width:auto; display:block; margin-bottom:clamp(28px, 5vh, 56px); }
+  .up-portada__eyebrow{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:var(--font-body); font-weight:600; font-size:.8rem;
+    letter-spacing:.24em; text-transform:uppercase;
+    color:var(--c-dorado-claro); margin-bottom:22px;
+  }
+  .up-portada__eyebrow::before{
+    content:''; width:16px; height:10px;
+    background:var(--up-eyebrow) left center / contain no-repeat;
+  }
+  .up-portada__title{
+    margin:0 0 22px; color:#fff;
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 3.9rem); line-height:.92; letter-spacing:.01em;
+    text-transform:uppercase;
+    -webkit-hyphens:auto; hyphens:auto; hyphenate-limit-chars:8 4 4;
+    text-shadow:0 2px 24px rgba(4,30,26,.5);
+  }
+  .up-portada__title .up-suave{ color:rgba(255,255,255,.74); font-weight:400; }
+  .up-portada__title .up-destacado{
+    display:block; margin-top:.28em;
+    text-transform:none; font-weight:700; letter-spacing:-.015em;
+    font-size:.78em; line-height:1.02;
+    color:var(--c-dorado-claro);
+  }
+  .up-portada__title--largo{ font-size:clamp(2rem, 4.1vw, 3.2rem); }
+  .up-portada__sub{
+    margin:0 0 28px; padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.28);
+    max-width:440px;
+    color:rgba(255,255,255,.86);
+    font-size:clamp(1rem, 1.5vw, 1.15rem); font-weight:300; letter-spacing:.02em;
+  }
+  .up-portada__quote{
+    color:#fff; font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:clamp(1.12rem, 1.8vw, 1.36rem); line-height:1.48;
+    max-width:500px; margin:0 0 38px;
+    padding-left:20px; border-left:3px solid var(--c-dorado);
+  }
+  .up-portada__acciones{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .up-portada__cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:var(--c-acento); text-decoration:none;
+    font-family:var(--font-body); font-weight:600; font-size:1rem; letter-spacing:.02em;
+    padding:16px 30px; border-radius:var(--r-md);
+    box-shadow:0 14px 34px rgba(4,30,26,.40);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .up-portada__cta:hover,
+  .up-portada__cta:focus-visible{ background:var(--c-dorado-claro); color:var(--c-deep); transform:translateY(-2px); }
+  .up-portada__descarga{
+    display:inline-grid; place-items:center;
+    width:52px; height:52px; border-radius:var(--r-md);
+    color:#fff; text-decoration:none;
+    border:1.5px solid rgba(255,255,255,.5);
+    transition:border-color .2s ease;
+  }
+  .up-portada__descarga svg{ width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; overflow:visible; }
+  .up-portada__descarga .up-flecha{ transition:transform .28s cubic-bezier(.34,1.4,.64,1); }
+  .up-portada__descarga:hover, .up-portada__descarga:focus-visible{ border-color:#fff; color:#fff; }
+  .up-portada__descarga:hover .up-flecha, .up-portada__descarga:focus-visible .up-flecha{ transform:translateY(3.5px); }
+
+  @media (prefers-reduced-motion: reduce){
+    .up-portada__descarga .up-flecha{ transition:none; }
+    .up-portada__cta{ transition:none; }
+  }
+  /* Móvil: la foto pasa arriba, a franja, fundida hacia abajo; el texto debajo */
+  @media (max-width: 900px){
+    .up-portada{ flex-direction:column; align-items:stretch; }
+    .up-portada__foto{
+      position:relative; width:100%; height:min(72vw, 380px);
+      background-position:78% 30%;
+      -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+              mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+    }
+    .up-portada__foto::after{ display:none; }
+    .up-portada__tahali{ right:auto; left:-18%; width:40%; top:0; bottom:auto; height:min(72vw, 380px); }
+    .up-portada__textura{ top:30%; left:-40%; width:140%; }
+    .up-portada__inner{ padding-top:8px; }
+    .up-portada__logo img{ height:84px; margin-bottom:24px; }
+    .up-portada__quote{ font-size:1.05rem; max-width:none; }
+    .up-portada__texto{ max-width:none; }
+  }
+</style>
+
+<section class="up-portada">
+  <span class="up-portada__textura" aria-hidden="true"></span>
+  <div class="up-portada__foto" role="img" aria-label="Un profesional de barba canosa y gafas revisa y anota un documento en su escritorio, con luz natural."></div>
+  <span class="up-portada__tahali" aria-hidden="true"></span>
+
+  <div class="up-portada__inner">
+    <div class="up-portada__texto">
+      <div class="up-portada__logo">
+        <img src="assets/img/logos/up-logo-blanco.svg" alt="Posgrados Panamericana · En línea" />
+      </div>
+
+      <div class="up-portada__eyebrow">Posgrados Panamericana · Unidad 2</div>
+
+      <h1 class="up-portada__title up-portada__title--largo" lang="es">
+        De la respuesta <span class="up-suave">a la</span> recomendación:
+        <span class="up-destacado">audita antes de confiar</span>
+      </h1>
+
+      <p class="up-portada__sub">Toma de decisiones con datos&nbsp;+&nbsp;IA</p>
+
+      <!-- Idea clave de la introducción, literal -->
+      <p class="up-portada__quote">
+        Auditar no es desconfiar de todo lo que la IA produce; es verificar antes de
+        actuar.
+      </p>
+
+      <div class="up-portada__acciones">
+        <a class="up-portada__cta" href="temario.html">
+          Ver el contenido
+          <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</template>
+<template id="prop-8">
+<style>
+  /* =========================================================
+     PORTADA · Posgrados Panamericana · PROPUESTA 8 «Foto · sin Tahalí»
+     Variante de la Propuesta 5 (portada-E) sin el Tahalí grande: la foto queda limpia. El
+     único Tahalí de la pantalla es el miniatura del eyebrow (el marcador de página del
+     manual). Se aparta del sistema: el manual pide Franco Cuartel y Tahalí juntos (p. 208).
+     La textura tipográfica del wordmark,
+     tono sobre tono, detrás del texto (pp. 130, 220). La foto va tal cual: sin filtro de
+     color (p. 28); solo la máscara que la funde y una sombra neutra en la base.
+     Foto: Vitaly Gariev, Unsplash (Unsplash License), unsplash.com/photos/Z6ogoeso9BI.
+     Cabeza en Laurentian Semibold EN ALTAS (p. 213); destacado en bajas (p. 214).
+     Drop-in: sustituye fuente/contenido/portada.html tal cual.
+     ========================================================= */
+  .up-portada{
+    position:relative; overflow:hidden; isolation:isolate;
+    min-height:100vh; min-height:100dvh;
+    display:flex; align-items:center;
+    background: linear-gradient(118deg, #062A25 0%, #0A4039 55%, #0B4740 100%);
+    color:#fff;
+  }
+  /* la textura tipográfica detrás del texto: una por composición */
+  .up-portada__textura{
+    position:absolute; z-index:0; pointer-events:none;
+    left:-12%; top:-22%; width:min(70vw, 900px); aspect-ratio:1;
+    background:#F7F4EE;
+    -webkit-mask:var(--up-textura) center / contain no-repeat;
+            mask:var(--up-textura) center / contain no-repeat;
+    opacity:.04;
+  }
+  /* la foto: mitad derecha a toda altura, fundida hacia el texto (el gesto de Andina).
+     El fundido es corto para que la mano que anota (el acto de verificar) quede a la vista. */
+  .up-portada__foto{
+    position:absolute; z-index:1; top:0; right:0; bottom:0;
+    width:min(62vw, 980px);
+    background:url('assets/img/curso/portada-persona.webp') 74% 30% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 12%, #000 28%);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 12%, #000 28%);
+  }
+  /* sombra neutra en la base para asentar la foto; no tiñe (p. 28: sin filtros) */
+  .up-portada__foto::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 62%, rgba(4,30,26,.55) 100%);
+  }
+  .up-portada__inner{
+    position:relative; z-index:3;
+    width:100%; max-width:1240px; margin:0 auto;
+    padding:clamp(32px, 6vw, 88px);
+  }
+  .up-portada__texto{ max-width:560px; }
+  .up-portada__logo img{ height:116px; width:auto; display:block; margin-bottom:clamp(28px, 5vh, 56px); }
+  .up-portada__eyebrow{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:var(--font-body); font-weight:600; font-size:.8rem;
+    letter-spacing:.24em; text-transform:uppercase;
+    color:var(--c-dorado-claro); margin-bottom:22px;
+  }
+  .up-portada__eyebrow::before{
+    content:''; width:16px; height:10px;
+    background:var(--up-eyebrow) left center / contain no-repeat;
+  }
+  .up-portada__title{
+    margin:0 0 22px; color:#fff;
+    font-family:var(--font-display); font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 3.9rem); line-height:.92; letter-spacing:.01em;
+    text-transform:uppercase;
+    -webkit-hyphens:auto; hyphens:auto; hyphenate-limit-chars:8 4 4;
+    text-shadow:0 2px 24px rgba(4,30,26,.5);
+  }
+  .up-portada__title .up-suave{ color:rgba(255,255,255,.74); font-weight:400; }
+  .up-portada__title .up-destacado{
+    display:block; margin-top:.28em;
+    text-transform:none; font-weight:700; letter-spacing:-.015em;
+    font-size:.78em; line-height:1.02;
+    color:var(--c-dorado-claro);
+  }
+  .up-portada__title--largo{ font-size:clamp(2rem, 4.1vw, 3.2rem); }
+  .up-portada__sub{
+    margin:0 0 28px; padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.28);
+    max-width:440px;
+    color:rgba(255,255,255,.86);
+    font-size:clamp(1rem, 1.5vw, 1.15rem); font-weight:300; letter-spacing:.02em;
+  }
+  .up-portada__quote{
+    color:#fff; font-family:var(--font-display); font-style:italic; font-weight:400;
+    font-size:clamp(1.12rem, 1.8vw, 1.36rem); line-height:1.48;
+    max-width:500px; margin:0 0 38px;
+    padding-left:20px; border-left:3px solid var(--c-dorado);
+  }
+  .up-portada__acciones{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .up-portada__cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:#fff; color:var(--c-acento); text-decoration:none;
+    font-family:var(--font-body); font-weight:600; font-size:1rem; letter-spacing:.02em;
+    padding:16px 30px; border-radius:var(--r-md);
+    box-shadow:0 14px 34px rgba(4,30,26,.40);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .up-portada__cta:hover,
+  .up-portada__cta:focus-visible{ background:var(--c-dorado-claro); color:var(--c-deep); transform:translateY(-2px); }
+  .up-portada__descarga{
+    display:inline-grid; place-items:center;
+    width:52px; height:52px; border-radius:var(--r-md);
+    color:#fff; text-decoration:none;
+    border:1.5px solid rgba(255,255,255,.5);
+    transition:border-color .2s ease;
+  }
+  .up-portada__descarga svg{ width:21px; height:21px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; overflow:visible; }
+  .up-portada__descarga .up-flecha{ transition:transform .28s cubic-bezier(.34,1.4,.64,1); }
+  .up-portada__descarga:hover, .up-portada__descarga:focus-visible{ border-color:#fff; color:#fff; }
+  .up-portada__descarga:hover .up-flecha, .up-portada__descarga:focus-visible .up-flecha{ transform:translateY(3.5px); }
+
+  @media (prefers-reduced-motion: reduce){
+    .up-portada__descarga .up-flecha{ transition:none; }
+    .up-portada__cta{ transition:none; }
+  }
+  /* Móvil: la foto pasa arriba, a franja, fundida hacia abajo; el texto debajo */
+  @media (max-width: 900px){
+    .up-portada{ flex-direction:column; align-items:stretch; }
+    .up-portada__foto{
+      position:relative; width:100%; height:min(72vw, 380px);
+      background-position:78% 30%;
+      -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+              mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
+    }
+    .up-portada__foto::after{ display:none; }
+    .up-portada__textura{ top:30%; left:-40%; width:140%; }
+    .up-portada__inner{ padding-top:8px; }
+    .up-portada__logo img{ height:84px; margin-bottom:24px; }
+    .up-portada__quote{ font-size:1.05rem; max-width:none; }
+    .up-portada__texto{ max-width:none; }
+  }
+</style>
+
+<section class="up-portada">
+  <span class="up-portada__textura" aria-hidden="true"></span>
+  <div class="up-portada__foto" role="img" aria-label="Un profesional de barba canosa y gafas revisa y anota un documento en su escritorio, con luz natural."></div>
+
+  <div class="up-portada__inner">
+    <div class="up-portada__texto">
+      <div class="up-portada__logo">
+        <img src="assets/img/logos/up-logo-blanco.svg" alt="Posgrados Panamericana · En línea" />
+      </div>
+
+      <div class="up-portada__eyebrow">Posgrados Panamericana · Unidad 2</div>
+
+      <h1 class="up-portada__title up-portada__title--largo" lang="es">
+        De la respuesta <span class="up-suave">a la</span> recomendación:
+        <span class="up-destacado">audita antes de confiar</span>
+      </h1>
+
+      <p class="up-portada__sub">Toma de decisiones con datos&nbsp;+&nbsp;IA</p>
+
+      <!-- Idea clave de la introducción, literal -->
+      <p class="up-portada__quote">
+        Auditar no es desconfiar de todo lo que la IA produce; es verificar antes de
+        actuar.
+      </p>
+
+      <div class="up-portada__acciones">
+        <a class="up-portada__cta" href="temario.html">
+          Ver el contenido
+          <iconify-icon icon="mdi:arrow-right"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</template>
 <script src="assets/js/course.js"></script>
 <script src="assets/js/core.js"></script>
 <script>
@@ -967,7 +1509,7 @@
   const LETRAS = { A: '1', B: '2', C: '3', D: '4', E: '5' };
   const leer = () => {
     const h = location.hash.slice(1).toUpperCase();
-    montar(/^[1-5]$/.test(h) ? h : LETRAS[h] || '1');
+    montar(/^[1-8]$/.test(h) ? h : LETRAS[h] || '1');
   };
   addEventListener('hashchange', leer);
   leer();
