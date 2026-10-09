@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" role="img"
+     aria-label="Seis barras enormes suben desde el borde inferior como un perfil de ciudad: las seis semanas de la campaña. Las dos que la IA señaló están rodeadas por un trazo punteado y sobre ellas se apoya el sello dorado de verificación.">
+  <!-- Ilustración de marca · Posgrados Panamericana · portada · PROPUESTA D «Cartel»
+       El gráfico de las seis semanas de la recomendación (versión 2) sale de la hoja y se
+       vuelve el fondo del cartel: seis Francos Cuarteles que suben desde el borde, los dos
+       señalados en punteado, y el sello dorado como único acento. Va detrás del titular,
+       bajo un velo verde hondo; el perfil arranca a la derecha para que el marco punteado
+       no cruce las letras. Variante sobre oscuro: sin fondo propio; un solo dorado. -->
+  <defs>
+    <linearGradient id="ilu-portada-d-barra" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3F7D74"/>
+      <stop offset="100%" stop-color="#0F5C51"/>
+    </linearGradient>
+    <linearGradient id="ilu-portada-d-barra-lejos" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E6A5F"/>
+      <stop offset="100%" stop-color="#0C4A42"/>
+    </linearGradient>
+    <linearGradient id="ilu-portada-d-sello" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D9C9A3"/>
+      <stop offset="100%" stop-color="#B9975B"/>
+    </linearGradient>
+    <radialGradient id="ilu-portada-d-luz" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D9C9A3" stop-opacity=".28"/>
+      <stop offset="100%" stop-color="#D9C9A3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- la luz del sello sobre el perfil -->
+  <circle cx="1190" cy="170" r="420" fill="url(#ilu-portada-d-luz)"/>
+
+  <!-- las seis semanas, de izquierda a derecha; las dos señaladas, más cerca y más claras -->
+  <rect x="350"  y="500" width="160" height="260" fill="url(#ilu-portada-d-barra-lejos)"/>
+  <rect x="566"  y="420" width="160" height="340" fill="url(#ilu-portada-d-barra-lejos)"/>
+  <rect x="782"  y="200" width="160" height="560" fill="url(#ilu-portada-d-barra)"/>
+  <rect x="998"  y="120" width="160" height="640" fill="url(#ilu-portada-d-barra)"/>
+  <rect x="1214" y="430" width="160" height="330" fill="url(#ilu-portada-d-barra-lejos)"/>
+  <rect x="1430" y="520" width="160" height="240" fill="url(#ilu-portada-d-barra-lejos)"/>
+
+  <!-- el trazo punteado de la IA alrededor de las dos semanas señaladas -->
+  <path d="M746 760 V72 H1194 V760" fill="none" stroke="#F7F4EE" stroke-width="4" stroke-dasharray="18 14" opacity=".7"/>
+
+  <!-- el sello: la afirmación queda verificada; lo único dorado -->
+  <g transform="translate(1190 170)">
+    <polygon points="-50,40 -14,40 14,180 -22,180" fill="#B9975B" opacity=".9"/>
+    <polygon points="10,40 46,40 74,180 38,180" fill="#D9C9A3" opacity=".9"/>
+    <circle cx="0" cy="0" r="140" fill="#0A4039" opacity=".22"/>
+    <circle cx="0" cy="0" r="124" fill="url(#ilu-portada-d-sello)"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#FFFDF8" stroke-width="4" opacity=".7"/>
+    <circle cx="0" cy="0" r="86" fill="none" stroke="#0A4039" stroke-width="2.5" opacity=".35"/>
+    <path d="M-46 6 L-14 38 L52 -30" fill="none" stroke="#0A4039" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

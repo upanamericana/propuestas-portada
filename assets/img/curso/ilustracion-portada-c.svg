@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img"
+     aria-label="Una persona sin rostro, de frente y recortada por el borde inferior, sostiene con las dos manos la hoja de la recomendación: seis barras, dos señaladas en trazo punteado, y el sello dorado de verificación en la esquina.">
+  <!-- Ilustración de marca · Posgrados Panamericana · portada · PROPUESTA C «Quien aprueba»
+       La persona que tiene que aprobar la recomendación («la presenta a su gerente», «la
+       persona que debe aprobarla», DI) recibe la hoja de la versión 2. Busto a escala de
+       cartel, sin rostro (familia §1.7), saliendo del borde inferior. Variante sobre oscuro:
+       sin fondo propio; un solo dorado: el sello. -->
+  <defs>
+    <radialGradient id="ilu-portada-c-luz" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3F7D74" stop-opacity=".62"/>
+      <stop offset="55%" stop-color="#3F7D74" stop-opacity=".18"/>
+      <stop offset="100%" stop-color="#3F7D74" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ilu-portada-c-hoja" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFDF8"/>
+      <stop offset="100%" stop-color="#EFE9DB"/>
+    </linearGradient>
+    <linearGradient id="ilu-portada-c-sello" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D9C9A3"/>
+      <stop offset="100%" stop-color="#B9975B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- halo de luz detrás de la persona -->
+  <circle cx="520" cy="380" r="470" fill="url(#ilu-portada-c-luz)"/>
+
+  <!-- la persona: torso, solapas, camisa, cuello, cabeza, pelo -->
+  <path d="M200 1000 L200 700 C200 560 290 520 420 486 L470 470 L570 470 L620 486 C750 520 840 560 840 700 L840 1000 Z" fill="#0F5C51"/>
+  <path d="M452 470 L520 600 L588 470 Z" fill="#F7F4EE"/>
+  <path d="M436 466 L520 606 L506 612 L414 484 Z" fill="#0A4039"/>
+  <path d="M604 466 L520 606 L534 612 L626 484 Z" fill="#0A4039"/>
+  <rect x="480" y="356" width="80" height="124" rx="22" fill="#F7F4EE"/>
+  <circle cx="520" cy="300" r="96" fill="#F7F4EE"/>
+  <path d="M424 300 A96 96 0 0 1 616 300 L618 334 Q614 348 598 346 L592 300 A74 74 0 0 0 486 232 Q452 250 438 300 L430 376 Q418 386 412 370 Z" fill="#3F7D74"/>
+
+  <!-- brazos (detrás de la hoja), un tono más hondo que la chaqueta -->
+  <path d="M296 640 L352 860" stroke="#0D4E45" stroke-width="98" stroke-linecap="round"/>
+  <path d="M744 640 L688 860" stroke="#0D4E45" stroke-width="98" stroke-linecap="round"/>
+
+  <!-- la hoja de la recomendación, en las manos -->
+  <g transform="translate(0 -44) rotate(-5 520 800)">
+    <rect x="344" y="616" width="380" height="520" fill="#041F1B" opacity=".4"/>
+    <rect x="330" y="600" width="380" height="520" fill="url(#ilu-portada-c-hoja)"/>
+    <rect x="346" y="616" width="348" height="488" fill="none" stroke="#B9975B" stroke-width="2" opacity=".85"/>
+    <rect x="354" y="624" width="332" height="472" fill="none" stroke="#B9975B" stroke-width="1" opacity=".5"/>
+    <!-- cabecera -->
+    <rect x="380" y="650" width="140" height="12" fill="#0F5C51"/>
+    <rect x="380" y="676" width="220" height="6" fill="#0A4039" opacity=".28"/>
+    <rect x="380" y="692" width="180" height="6" fill="#0A4039" opacity=".28"/>
+    <!-- las seis semanas; dos señaladas en punteado -->
+    <rect x="380" y="840" width="36" height="80"  fill="#0F5C51" opacity=".30"/>
+    <rect x="432" y="810" width="36" height="110" fill="#0F5C51" opacity=".30"/>
+    <rect x="484" y="750" width="36" height="170" fill="#0F5C51"/>
+    <rect x="536" y="730" width="36" height="190" fill="#0F5C51"/>
+    <rect x="588" y="825" width="36" height="95"  fill="#0F5C51" opacity=".30"/>
+    <rect x="640" y="850" width="36" height="70"  fill="#0F5C51" opacity=".30"/>
+    <rect x="474" y="716" width="110" height="216" fill="none" stroke="#0F5C51" stroke-width="2.5" stroke-dasharray="8 7"/>
+    <line x1="380" y1="921" x2="676" y2="921" stroke="#0A4039" stroke-width="2" opacity=".4"/>
+    <!-- texto de la recomendación -->
+    <rect x="380" y="956" width="296" height="6" fill="#0A4039" opacity=".28"/>
+    <rect x="380" y="972" width="250" height="6" fill="#0A4039" opacity=".28"/>
+    <!-- el sello: lo único dorado -->
+    <g transform="translate(652 950)">
+      <polygon points="-22,16 -6,16 8,80 -8,80" fill="#B9975B" opacity=".9"/>
+      <polygon points="2,16 18,16 32,80 16,80" fill="#D9C9A3" opacity=".9"/>
+      <circle cx="0" cy="0" r="56" fill="#0A4039" opacity=".18"/>
+      <circle cx="0" cy="0" r="50" fill="url(#ilu-portada-c-sello)"/>
+      <circle cx="0" cy="0" r="40" fill="none" stroke="#FFFDF8" stroke-width="2" opacity=".7"/>
+      <path d="M-18 2 L-5 15 L20 -12" fill="none" stroke="#0A4039" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- las manos, delante de la hoja -->
+  <ellipse cx="356" cy="860" rx="50" ry="36" transform="rotate(-24 356 860)" fill="#F7F4EE"/>
+  <ellipse cx="684" cy="860" rx="50" ry="36" transform="rotate(24 684 860)" fill="#F7F4EE"/>
+</svg>
